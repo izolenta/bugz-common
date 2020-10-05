@@ -158,16 +158,21 @@ class BugzService {
       colorToTeam[_bots.firstWhere((element) => element.id == id).color] = id;
     }
     steps.add(_recordStep());
-    while(_bots.where((element) => element.isAlive).isNotEmpty) {
+    while(isSimulationActive) {
       processSimulationStep();
       steps.add(_recordStep());
     }
 
-    final teamToRating = <String, int>{};
-    for (var team in _teams) {
-      teamToRating[team.id] = team.rating;
-    }
-    return GameRecordingDto(colorToTeam, teamToRating, steps, _bots.firstWhere((b) => b.isAlive).id);
+    final winnerId = _bots.firstWhere((b) => b.isAlive).id;
+
+    final ratings = recalculateRatings(teams[0], teams[1], winnerId);
+    print([ratings.first, ratings.second]);
+
+    final teamToRating = <String, int>{
+      teams[0].id : ratings.first,
+      teams[1].id : ratings.second,
+    };
+    return GameRecordingDto(colorToTeam, teamToRating, steps, winnerId);
   }
 
   GameStepDto _recordStep() {
@@ -365,5 +370,20 @@ class BugzService {
       p = Point(_random.nextInt(fieldWidthParam), _random.nextInt(fieldHeightParam));
     } while (_foods.contains(p) || _bots.where((b) => b.coords == p).isNotEmpty);
     return p;
+  }
+
+  ObjectPair<int, int> recalculateRatings(TeamDescription td1, TeamDescription td2, String winnerId) {
+    var diff1 = td2.rating - td1.rating;
+    if (diff1 < -400) { diff1 = -400;}
+    if (diff1 > 400) { diff1 = 400;}
+    var diff2 = td1.rating - td2.rating;
+    if (diff2 < -400) { diff2 = -400;}
+    if (diff2 > 400) { diff2 = 400;}
+
+    final dr1 = 1/(1 + pow(10, diff1/400));
+    final dr2 = 1/(1 + pow(10, diff2/400));
+    final nr1 = td1.rating + (td1.rating > 2400? 10 : 20) * ((winnerId == td1.id? 1 : 0) - dr1);
+    final nr2 = td2.rating + (td2.rating > 2400? 10 : 20) * ((winnerId == td2.id? 1 : 0) - dr2);
+    return ObjectPair(nr1.toInt(), nr2.toInt());
   }
 }

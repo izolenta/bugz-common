@@ -5,7 +5,7 @@ import 'point_dto.dart';
 
 part 'game_step_dto.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class GameStepDto {
   final List<GameBugDto> bugs;
   final List<PointDto> food;

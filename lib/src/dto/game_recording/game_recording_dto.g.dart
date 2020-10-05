@@ -27,6 +27,6 @@ Map<String, dynamic> _$GameRecordingDtoToJson(GameRecordingDto instance) =>
       'colorToTeam':
           instance.colorToTeam?.map((k, e) => MapEntry(k.toString(), e)),
       'teamToRating': instance.teamToRating,
-      'steps': instance.steps,
+      'steps': instance.steps?.map((e) => e?.toJson())?.toList(),
       'winnerId': instance.winnerId,
     };

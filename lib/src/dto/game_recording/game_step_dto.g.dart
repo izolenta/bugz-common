@@ -24,7 +24,7 @@ GameStepDto _$GameStepDtoFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$GameStepDtoToJson(GameStepDto instance) =>
     <String, dynamic>{
-      'bugs': instance.bugs,
-      'food': instance.food,
+      'bugs': instance.bugs?.map((e) => e?.toJson())?.toList(),
+      'food': instance.food?.map((e) => e?.toJson())?.toList(),
       'teamToLife': instance.teamToLife,
     };

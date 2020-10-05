@@ -31,7 +31,7 @@ class BugModel {
   }
 
   bool get isAlive => _life > 0;
-  int get currentCommand => genome[_pointer];
+  int get currentCommand => genome[_pointer].toInt();
 
   Map<String, dynamic> toJson() => {
       'generation': generation,

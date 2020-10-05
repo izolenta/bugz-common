@@ -4,7 +4,7 @@ import 'game_step_dto.dart';
 
 part 'game_recording_dto.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class GameRecordingDto {
   final Map<int, String> colorToTeam;
   final Map<String, int> teamToRating;

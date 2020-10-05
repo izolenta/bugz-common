@@ -18,7 +18,7 @@ GameBugDto _$GameBugDtoFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$GameBugDtoToJson(GameBugDto instance) =>
     <String, dynamic>{
-      'coords': instance.coords,
+      'coords': instance.coords?.toJson(),
       'direction': instance.direction,
       'color': instance.color,
     };

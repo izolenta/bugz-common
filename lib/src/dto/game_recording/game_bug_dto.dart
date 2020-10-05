@@ -4,7 +4,7 @@ import 'point_dto.dart';
 
 part 'game_bug_dto.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class GameBugDto {
   final PointDto coords;
   final int direction;

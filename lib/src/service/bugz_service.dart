@@ -174,7 +174,7 @@ class BugzService {
     final teamToLife = <String, int>{};
     for (var team in _teams) {
       teamToLife[team.id] =
-          _bots.where((b) => b.isAlive && b.id == team.id).toList().map((e) => e.life).reduce((a, b) => a + b);
+          _bots.where((b) => b.id == team.id).toList().map((e) => e.life).reduce((a, b) => a + b);
     }
     final foods = <PointDto>[];
     for (var food in _foods) {

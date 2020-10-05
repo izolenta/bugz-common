@@ -1,4 +1,4 @@
-library bugz.team_description;
+library bugz_common.team_description;
 
 import 'package:built_value/built_value.dart';
 

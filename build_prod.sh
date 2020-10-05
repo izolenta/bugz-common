@@ -1,0 +1,1 @@
+pub run webdev build -o dist

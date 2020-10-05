@@ -186,7 +186,7 @@ class BugzService {
       foods.add(PointDto(food.x, food.y));
     }
     final bots = <GameBugDto>[];
-    for (var bot in _bots) {
+    for (var bot in _bots.where((element) => element.isAlive)) {
       bots.add(GameBugDto(
         PointDto(bot.coords.x, bot.coords.y),
         bot.direction,

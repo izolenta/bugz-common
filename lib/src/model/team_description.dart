@@ -15,4 +15,7 @@ abstract class TeamDescription implements Built<TeamDescription, TeamDescription
   int get rating;
   String get ownerName;
   String get ownerId;
+
+  @nullable
+  int get gamesPlayed;
 }

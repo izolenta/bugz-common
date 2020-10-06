@@ -380,10 +380,13 @@ class BugzService {
     if (diff2 < -400) { diff2 = -400;}
     if (diff2 > 400) { diff2 = 400;}
 
+    final k1 = td1.gamesPlayed < 30? 40 : td1.rating > 2400? 10 : 20;
+    final k2 = td2.gamesPlayed < 30? 40 : td2.rating > 2400? 10 : 20;
+
     final dr1 = 1/(1 + pow(10, diff1/400));
     final dr2 = 1/(1 + pow(10, diff2/400));
-    final nr1 = td1.rating + (td1.rating > 2400? 10 : 20) * ((winnerId == td1.id? 1 : 0) - dr1);
-    final nr2 = td2.rating + (td2.rating > 2400? 10 : 20) * ((winnerId == td2.id? 1 : 0) - dr2);
+    final nr1 = td1.rating + k1 * ((winnerId == td1.id? 1 : 0) - dr1);
+    final nr2 = td2.rating + k2 * ((winnerId == td2.id? 1 : 0) - dr2);
     return ObjectPair(nr1.toInt(), nr2.toInt());
   }
 }

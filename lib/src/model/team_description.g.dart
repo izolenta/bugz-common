@@ -19,6 +19,8 @@ class _$TeamDescription extends TeamDescription {
   final String ownerName;
   @override
   final String ownerId;
+  @override
+  final int gamesPlayed;
 
   factory _$TeamDescription([void Function(TeamDescriptionBuilder) updates]) =>
       (new TeamDescriptionBuilder()..update(updates)).build();
@@ -29,7 +31,8 @@ class _$TeamDescription extends TeamDescription {
       this.genome,
       this.rating,
       this.ownerName,
-      this.ownerId})
+      this.ownerId,
+      this.gamesPlayed})
       : super._() {
     if (name == null) {
       throw new BuiltValueNullFieldError('TeamDescription', 'name');
@@ -68,17 +71,22 @@ class _$TeamDescription extends TeamDescription {
         genome == other.genome &&
         rating == other.rating &&
         ownerName == other.ownerName &&
-        ownerId == other.ownerId;
+        ownerId == other.ownerId &&
+        gamesPlayed == other.gamesPlayed;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc($jc(0, name.hashCode), id.hashCode), genome.hashCode),
-                rating.hashCode),
-            ownerName.hashCode),
-        ownerId.hashCode));
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, name.hashCode), id.hashCode),
+                        genome.hashCode),
+                    rating.hashCode),
+                ownerName.hashCode),
+            ownerId.hashCode),
+        gamesPlayed.hashCode));
   }
 
   @override
@@ -89,7 +97,8 @@ class _$TeamDescription extends TeamDescription {
           ..add('genome', genome)
           ..add('rating', rating)
           ..add('ownerName', ownerName)
-          ..add('ownerId', ownerId))
+          ..add('ownerId', ownerId)
+          ..add('gamesPlayed', gamesPlayed))
         .toString();
   }
 }
@@ -122,6 +131,10 @@ class TeamDescriptionBuilder
   String get ownerId => _$this._ownerId;
   set ownerId(String ownerId) => _$this._ownerId = ownerId;
 
+  int _gamesPlayed;
+  int get gamesPlayed => _$this._gamesPlayed;
+  set gamesPlayed(int gamesPlayed) => _$this._gamesPlayed = gamesPlayed;
+
   TeamDescriptionBuilder();
 
   TeamDescriptionBuilder get _$this {
@@ -132,6 +145,7 @@ class TeamDescriptionBuilder
       _rating = _$v.rating;
       _ownerName = _$v.ownerName;
       _ownerId = _$v.ownerId;
+      _gamesPlayed = _$v.gamesPlayed;
       _$v = null;
     }
     return this;
@@ -159,7 +173,8 @@ class TeamDescriptionBuilder
             genome: genome,
             rating: rating,
             ownerName: ownerName,
-            ownerId: ownerId);
+            ownerId: ownerId,
+            gamesPlayed: gamesPlayed);
     replace(_$result);
     return _$result;
   }

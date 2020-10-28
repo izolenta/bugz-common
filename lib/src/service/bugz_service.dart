@@ -87,7 +87,6 @@ class BugzService {
         var name = genomes[j].name;
         if (i == j) { //mutation
           genome[_random.nextInt(64)] = _random.nextInt(64);
-          //name+='m$generation';
         }
         genomesNames.add(name);
         genomesPack.add(genome);

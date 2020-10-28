@@ -18,4 +18,7 @@ abstract class TeamDescription implements Built<TeamDescription, TeamDescription
 
   @nullable
   int get gamesPlayed;
+
+  @nullable
+  bool get forTournament;
 }

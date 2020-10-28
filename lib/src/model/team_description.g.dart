@@ -21,6 +21,8 @@ class _$TeamDescription extends TeamDescription {
   final String ownerId;
   @override
   final int gamesPlayed;
+  @override
+  final bool forTournament;
 
   factory _$TeamDescription([void Function(TeamDescriptionBuilder) updates]) =>
       (new TeamDescriptionBuilder()..update(updates)).build();
@@ -32,7 +34,8 @@ class _$TeamDescription extends TeamDescription {
       this.rating,
       this.ownerName,
       this.ownerId,
-      this.gamesPlayed})
+      this.gamesPlayed,
+      this.forTournament})
       : super._() {
     if (name == null) {
       throw new BuiltValueNullFieldError('TeamDescription', 'name');
@@ -72,7 +75,8 @@ class _$TeamDescription extends TeamDescription {
         rating == other.rating &&
         ownerName == other.ownerName &&
         ownerId == other.ownerId &&
-        gamesPlayed == other.gamesPlayed;
+        gamesPlayed == other.gamesPlayed &&
+        forTournament == other.forTournament;
   }
 
   @override
@@ -81,12 +85,14 @@ class _$TeamDescription extends TeamDescription {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, name.hashCode), id.hashCode),
-                        genome.hashCode),
-                    rating.hashCode),
-                ownerName.hashCode),
-            ownerId.hashCode),
-        gamesPlayed.hashCode));
+                    $jc(
+                        $jc($jc($jc(0, name.hashCode), id.hashCode),
+                            genome.hashCode),
+                        rating.hashCode),
+                    ownerName.hashCode),
+                ownerId.hashCode),
+            gamesPlayed.hashCode),
+        forTournament.hashCode));
   }
 
   @override
@@ -98,7 +104,8 @@ class _$TeamDescription extends TeamDescription {
           ..add('rating', rating)
           ..add('ownerName', ownerName)
           ..add('ownerId', ownerId)
-          ..add('gamesPlayed', gamesPlayed))
+          ..add('gamesPlayed', gamesPlayed)
+          ..add('forTournament', forTournament))
         .toString();
   }
 }
@@ -135,6 +142,11 @@ class TeamDescriptionBuilder
   int get gamesPlayed => _$this._gamesPlayed;
   set gamesPlayed(int gamesPlayed) => _$this._gamesPlayed = gamesPlayed;
 
+  bool _forTournament;
+  bool get forTournament => _$this._forTournament;
+  set forTournament(bool forTournament) =>
+      _$this._forTournament = forTournament;
+
   TeamDescriptionBuilder();
 
   TeamDescriptionBuilder get _$this {
@@ -146,6 +158,7 @@ class TeamDescriptionBuilder
       _ownerName = _$v.ownerName;
       _ownerId = _$v.ownerId;
       _gamesPlayed = _$v.gamesPlayed;
+      _forTournament = _$v.forTournament;
       _$v = null;
     }
     return this;
@@ -174,7 +187,8 @@ class TeamDescriptionBuilder
             rating: rating,
             ownerName: ownerName,
             ownerId: ownerId,
-            gamesPlayed: gamesPlayed);
+            gamesPlayed: gamesPlayed,
+            forTournament: forTournament);
     replace(_$result);
     return _$result;
   }

@@ -162,7 +162,7 @@ class BugzService {
       steps.add(_recordStep());
     }
 
-    final winnerId = _bots.firstWhere((b) => b.isAlive).id;
+    final winnerId = _bots.firstWhere((b) => b.isAlive, orElse: () => null)?.id?? teams.last.id;
 
     final ratings = recalculateRatings(teams[0], teams[1], winnerId);
     print([ratings.first, ratings.second]);

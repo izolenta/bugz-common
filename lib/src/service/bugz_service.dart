@@ -138,9 +138,9 @@ class BugzService {
     }
   }
 
-  void processGeneticSimulation() {
-    while(_bots.where((element) => element.isAlive).isNotEmpty) {
-      processSimulationStep(stopWhenOneTeamLost: false);
+  void processGeneticSimulation([bool stopWhenOneTeamLost = true]) {
+    while(_bots.where((element) => element.isAlive).isNotEmpty && (isSimulationActive || !stopWhenOneTeamLost)) {
+      processSimulationStep(stopWhenOneTeamLost: stopWhenOneTeamLost);
       if (_bots.any((element) => element.score > 1000000)) {
         print('Bot is too smart');
         break;

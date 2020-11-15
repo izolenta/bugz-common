@@ -195,9 +195,9 @@ class BugzService {
     return GameStepDto(bots, foods, teamToLife);
   }
   
-  void processSimulationStep() {
+  void processSimulationStep({bool stopWhenOneTeamLost = true}) {
     for (var i = 0; i < _bots.length; i++) {
-      if (!_bots[i].isAlive) {
+      if (!_bots[i].isAlive || (stopWhenOneTeamLost && !isSimulationActive)) {
         continue;
       }
       var commandCount = 0;
